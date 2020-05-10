@@ -25,7 +25,7 @@ def setup(opts):
 
 @runway.command(name='paste',
                 inputs= { 'image': image },
-                outputs={ 'image': image })
+                outputs={ 'image': image(channels=4) })
 def paste(model,inputs):
     start = time.time()
     logging.info('generating mask...')

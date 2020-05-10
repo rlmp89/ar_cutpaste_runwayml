@@ -1,5 +1,5 @@
 
-const url = 'http://50760297.ngrok.io/paste';
+const url = 'http://4c3750f7.ngrok.io/paste';
 
 
 let myCanvas, video, button; 
@@ -35,8 +35,12 @@ function setup() {
 }
 
 function draw() {
+  translate(width,0); // move to far corner
+  scale(-1.0,1.0);
   // Draw videos on the canvas
   image(video, 0, 0);
+
+  
 }
 
 // Create a button
