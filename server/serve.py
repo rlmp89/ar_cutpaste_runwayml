@@ -18,7 +18,7 @@ def sample(model, img):
    
       
 
-@runway.setup(options={})
+@runway.setup(options={"onnx":number(default=0)})
 def setup(opts):
     import basnet
     return basnet
@@ -45,6 +45,7 @@ def paste(model,inputs):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ngrok', action='store_true')
+    parser.add_argument('--onnx', action='store_true')
     parser.add_argument('--port', default=8081,type=int)
     logging.basicConfig(level=logging.INFO)
     args = parser.parse_args()
@@ -52,4 +53,4 @@ if __name__ == '__main__':
         from pyngrok import ngrok
         public_url = ngrok.connect(args.port)
         logging.info(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}/\"".format(public_url, args.port))
-    runway.run(host='0.0.0.0', port=args.port)
+    runway.run(host='0.0.0.0', port=args.port,model_options={'onnx':int(args.onnx)})

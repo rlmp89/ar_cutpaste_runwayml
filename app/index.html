@@ -6,12 +6,17 @@
     <meta charset="utf-8" />
   </head>
   <body>
+    <h2> Model endpoint </h2>
+    <form id="form" onsubmit="return false;">
+      <input style="position:relative;  width:20%;" placeholder="http://xxx.ngrok.io/"  type="text" id="url" />
+    </form>
+    <h2>File input</h2>
     <input type="file"
        id="upload" name="upload"
        accept="image/png, image/jpeg">
-    <div id="cam">
-      </div>
-    <canvas id="res" width="640" height="480">
+     <h2> Cam input</h2>
+    <div id="cam"> </div>
+    <canvas id="res"  width="640" height="480">
         Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
     </canvas>
     <script src="sketch.js"></script>

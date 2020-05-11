@@ -58,7 +58,7 @@ def preprocess(image):
     return sample
 
 
-def run(img):
+def run(img,export_onnx=False):
     torch.cuda.empty_cache()
 
     sample = preprocess(img)
@@ -75,7 +75,8 @@ def run(img):
     # Normalization.
     pred = d1[:, 0, :, :]
     predict = normPRED(pred)
-
+    if export_onnx:
+      torch.onnx.export(net, inputs_test, 'export.onnx', verbose=True)
     # Convert to PIL Image
     predict = predict.squeeze()
     predict_np = predict.cpu().data.numpy()

@@ -1,11 +1,9 @@
 
-const url = 'http://4c3750f7.ngrok.io/paste';
-
-
 let myCanvas, video, button; 
-var input = document.querySelector('input[type=file]');
 
+var input = document.querySelector('input[type=file]');
 input.addEventListener('change', onFileChange);
+
 function onFileChange(){
   var file = input.files[0];
   let imageData;
@@ -21,7 +19,6 @@ function onFileChange(){
   }
   reader.readAsDataURL(file);
 }
-
 
 function setup() {
   myCanvas = createCanvas(640, 480);
@@ -39,8 +36,6 @@ function draw() {
   scale(-1.0,1.0);
   // Draw videos on the canvas
   image(video, 0, 0);
-
-  
 }
 
 // Create a button
@@ -62,8 +57,19 @@ function onButtonClicked(){
     runmodel(postData);
 }}
 
+
+function getModelEndpoint() {
+  var input = document.getElementById("url").value;
+  if  (input.endsWith('/')){
+    return  input+ 'paste'
+  }
+  return     input+ '/paste'
+}
+
+
+
 function runmodel(payload) {
-    // Send HTTP Post request to Runway with image data, runway will return the image caption
+    var url  = getModelEndpoint()
     httpPost(url, 'json', payload, (output) => {
       if (output)  {
         var myCanvas = document.getElementById('res');
