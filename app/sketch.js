@@ -1,6 +1,6 @@
 
 let myCanvas, video, button; 
-
+const local_url = 'http://127.0.0.1:8081';
 var input = document.querySelector('input[type=file]');
 input.addEventListener('change', onFileChange);
 
@@ -60,6 +60,7 @@ function onButtonClicked(){
 
 function getModelEndpoint() {
   var input = document.getElementById("url").value;
+  input = ((input==='') ? local_url : input);
   if  (input.endsWith('/')){
     return  input+ 'paste'
   }

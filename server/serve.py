@@ -53,4 +53,4 @@ if __name__ == '__main__':
         from pyngrok import ngrok
         public_url = ngrok.connect(args.port)
         logging.info(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}/\"".format(public_url, args.port))
-    runway.run(host='0.0.0.0', port=args.port,model_options={'onnx':int(args.onnx)})
+    runway.run(host='127.0.0.1', port=args.port,model_options={'onnx':int(args.onnx)})

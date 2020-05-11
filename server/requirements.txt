@@ -1,2 +1,5 @@
 pyngrok
 runway-python
+scikit-image
+torch
+torchvision
